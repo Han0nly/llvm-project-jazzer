@@ -140,7 +140,11 @@ public:
   std::string toString() const {
     std::stringstream SS;
     for (auto arg : getArguments())
+#ifdef _WIN32
+      SS << arg << " ";
+#else
       SS << "'" << arg << "' ";
+#endif
     if (hasOutputFile())
       SS << ">" << getOutputFile() << " ";
     if (isOutAndErrCombined())
