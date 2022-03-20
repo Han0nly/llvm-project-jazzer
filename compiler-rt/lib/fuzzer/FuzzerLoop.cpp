@@ -298,7 +298,8 @@ void Fuzzer::AlarmCallback() {
     DumpCurrentUnit("timeout-");
     Printf("==%lu== ERROR: libFuzzer: timeout after %d seconds\n", GetPid(),
            Seconds);
-    PrintStackTrace();
+    #PrintStackTrace();
+    Printf("PrintStackTrace Skipped\n");
     Printf("SUMMARY: libFuzzer: timeout\n");
     PrintFinalStats();
     _Exit(Options.TimeoutExitCode); // Stop right now.
